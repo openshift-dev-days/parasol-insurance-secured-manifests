@@ -9,7 +9,7 @@ replicas: 2
 
 resources:
   requests:
-    cpu: 500m
+    cpu: 200m
     memory: 512Mi
   limits:
     cpu: 500m
@@ -23,4 +23,4 @@ database:
 hpa:
   minReplicas: 2
   maxReplicas: 4
-  cpuTargetPercent: 10
+  cpuTargetPercent: 70
