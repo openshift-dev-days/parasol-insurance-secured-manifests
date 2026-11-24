@@ -5,6 +5,19 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   serviceAccountName: parasol-insurance-secured-build
+  resources:
+    kubernetesResource:
+      spec:
+        template:
+          spec:
+            containers:
+              - resources:
+                  requests:
+                    cpu: {{ .Values.eventListener.resources.requests.cpu | quote }}
+                    memory: {{ .Values.eventListener.resources.requests.memory | quote }}
+                  limits:
+                    cpu: {{ .Values.eventListener.resources.limits.cpu | quote }}
+                    memory: {{ .Values.eventListener.resources.limits.memory | quote }}
   triggers:
     - name: merge-request
       interceptors:
